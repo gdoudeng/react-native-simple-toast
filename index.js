@@ -16,19 +16,31 @@ export default {
   CENTER: RCTToast.CENTER,
 
   show(message, duration, viewControllerBlacklist) {
+    let newMessage
+    if (typeof message === 'object') {
+      newMessage = JSON.stringify(message)
+    } else {
+      newMessage = message
+    }
     RCTToast.show(
-      message,
-      duration === undefined ? RCTToast.SHORT : duration,
-      viewControllerBlacklist
+        newMessage,
+        duration === undefined ? RCTToast.SHORT : duration,
+        viewControllerBlacklist
     );
   },
 
   showWithGravity(message, duration, gravity, viewControllerBlacklist) {
+    let newMessage
+    if (typeof message === 'object') {
+      newMessage = JSON.stringify(message)
+    } else {
+      newMessage = message
+    }
     RCTToast.showWithGravity(
-      message,
-      duration === undefined ? RCTToast.SHORT : duration,
-      gravity,
-      viewControllerBlacklist
+        newMessage,
+        duration === undefined ? RCTToast.SHORT : duration,
+        gravity,
+        viewControllerBlacklist
     );
   },
 };
